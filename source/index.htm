@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<script type="text/javascript" src="//sgxengine.com/code/lib/js/jquery/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="//sgxengine.com/code/jpjs/jquery.jplayer.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="css/emu_main.css">
+
+		<script type="text/javascript" src="js/emf/emf.js"></script>
+		<script type="text/javascript" src="js/emf/utils.js"></script>
+		<script type="text/javascript" src="js/emf/maths.js"></script>
+		<script type="text/javascript" src="js/emf/framework.js"></script>
+
+	</head>
+
+<body>
+
+	<table border=0>
+	<tr>
+		<td>
+			<div class="emu_section">
+				<div id="registers_title">Registers</div>
+				<div id="registers"></div>
+			</div>
+
+			<div class="emu_section">
+				<div id="disassembly_title">Disassembly</div>
+				<div id="disassembly"></div>
+			</div>
+		</td><td>
+		<canvas id="SGXCanvas" width="320" height="480">
+		This browser does not support the HTML5 Canvas.
+		</canvas></td>
+	</tr>
+	<tr><td>
+		<div class="emu_section">
+			Control:
+			<button id= "emf_step">Step</button>
+			<button id= "emf_stop">Stop</button>
+			<button id= "emf_run">Run</button> | 
+			<button id= "emf_reset">Reset</button>
+		</div>
+	</td><td>
+		<div class="emu_section">
+			<div id="memory_title">Memory</div>
+			<div id="memory"></div>
+		</div>
+	</td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td>
+			<div id="lineprinter"></div>
+		</td>
+	</tr>
+	</table>
+
+	<script type='text/javascript' src='//sgxengine.com/code/sgx/sgx-3.1.14.min.js'></script>
+
+</body>
+
+</html>
