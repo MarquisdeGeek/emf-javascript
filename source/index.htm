@@ -9,7 +9,9 @@
 		<script type="text/javascript" src="js/emf/utils.js"></script>
 		<script type="text/javascript" src="js/emf/maths.js"></script>
 		<script type="text/javascript" src="js/emf/framework.js"></script>
-
+		<script type="text/javascript" src="js/emf/debugger.js"></script>
+		<script type="text/javascript" src="js/emf/device_paper_tape.js"></script>
+		<script type="text/javascript" src="js/emf/device_teleprinter.js"></script>
 	</head>
 
 <body>
@@ -48,9 +50,17 @@
 	</tr>
 	<tr>
 		<td>
+		<div class="emu_section">
+			Tape:
+			<div id="tape1"></div>
+		</div>
+		<div class="emu_debugger">
+			<div id="dbug_output">Debugger:<br></div>
+			<div id="dbug_input"><input id="dbus_input_inp"></input></div>
+		</div>
 		</td>
 		<td>
-			<div id="lineprinter"></div>
+			<div id="lineprinter" class="emu_teletype"></div>
 		</td>
 	</tr>
 	</table>

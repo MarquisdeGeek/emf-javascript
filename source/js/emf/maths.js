@@ -35,25 +35,33 @@ var mask_msb, mask_result, mask_value, value_neg;
 	// Operations
 	function assign(v) {
 		value = asValue(v);
+		// Note: the source number may not be the same size
+		// as the destination, so we re-work the number here.
 		if (value < 0) {
-			value = value - value_neg;
+			value += mask_result + 1;
+			//value +
+			//value = value - value_neg;
 		}
+		value &= mask_result;
 		return this;
 	}
 
 	// Arithmetic
 	function add(v) {
-		// TODO: adding 'v' of instance emuNumber, where n != n'
-		var orig = value;
-		value += asValue(v);
-		setOverflow(orig < 128 && value >= 128);
+		var v_prime = asValue(v);
+		var orig = v_prime;
+
+		value += asValue(v_prime);
+		setOverflow(value >= mask_result);
+
+		value &= mask_result;
 		return this;
 	}
 
 	function adc(v, c) {
 		var over = false;
 
-		add(asValue(v))
+		add(v)
 		over |= isOverflow();
 
 		add(asValue(c) ? 1 : 0);
@@ -85,6 +93,24 @@ var mask_msb, mask_result, mask_value, value_neg;
 		return this;
 	}
 
+	function shiftLogicalLeft(v) {
+		for(var i=0;i<v;++i) {
+			if (value & (mask_msb>>1)) {
+				value |=  mask_msb;
+			}
+			value <<= 1;
+		}
+		assign(value);
+	}
+
+	function shiftLogicalRight(v) {
+		for(var i=0;i<v;++i) {
+			setOverflow(v & 1); // TODO: or should this be underflow
+			value >>= 1;
+		}
+		assign(value);
+	}
+
 	// IO
 	function get() {
 		return value & mask_msb ? value_neg+(value & mask_value) : (value & mask_value);
@@ -101,6 +127,15 @@ var mask_msb, mask_result, mask_value, value_neg;
 	function getBitWidth() {
 		return bits;
 	}
+
+
+	function getMasked(msb, lsb) {
+		var m = value >> lsb;
+		m &= emf.Number.maskLSB(msb-lsb);
+		return m;
+	}
+
+
 
 	function equals(r) {
 		return r == get();
@@ -178,10 +213,24 @@ Set if the result did not fit in the register
 		getBitWidth,
 		bitAnd,
 		bitOr,
+		shiftLogicalLeft,
+		shiftLogicalRight,
 		getComplement,
-		//asBinaryString: asBinaryString,
+		getMasked,
 		//
+		isNegative : function() { return value & mask_msb ? true : false; },
 		isOverflow : function() { return flagV; }
 	};
 
+}
+
+// The left most N bits
+emf.Number.maskLSB = function(bits) {
+	return (1<<bits) - 1;
+}
+
+// The right most N bits, of a TOTAL bit word
+emf.Number.maskMSB = function(bits, total) {
+	var mask = (1<<bits) - 1;
+	return mask << (total - bits);
 }
