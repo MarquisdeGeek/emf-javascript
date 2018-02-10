@@ -1,6 +1,4 @@
 // Name chosen to avoid the usual suspects
-//emf.debugemf = emf.debugemf || {};
-
 
 emf.debugemf = function() {
 var bp = [];

@@ -8,3 +8,7 @@ This library code is to aid the development of emulators, written in Javascript,
 ## Note
 
 This code does not do anything interesting, and probably will not make much sense if viewed on its own! Instead, take a peek at the Elliott 903 simulator to see it in action.
+
+https://github.com/MarquisdeGeek/emf-elliott903-emulator
+
+
