@@ -11,19 +11,26 @@ emf.framework.registers = function(div, machine, previous) {
 			span_class += " changed";
 		}
 		code += "<span class='" + span_class + "'>";
-		code += e.reg + " : " + state[e.reg].getUnsigned() + "(" + emf.utils.hex(state[e.reg].getUnsigned(), sgxRoundUp(state[e.reg].getBitWidth()/4)) + ")" + "<br>";
+		code += e.reg + " : " + state[e.reg].getUnsigned() + "(0x" + emf.utils.hex(state[e.reg].getUnsigned(), sgxRoundUp(state[e.reg].getBitWidth()/4)) + ")" + "<br>";
 		code += "</span>";
 	});
 	$(div).html(code);
 }
 
-emf.framework.disassemble = function(div, machine, fromAddr, toAddr) {
+emf.framework.disassemble = function(div, machine, fromAddr, toAddr, pc) {
 	var code = '';
 
 	for(var i=fromAddr;i<toAddr;) {
 		var dis = machine.disassemble(i);
-		var line = "<span class='emu_disassembly_line'>" + emf.utils.hex16(i) + " : ";
+		var line = "";
 
+		if (pc == i) {
+			line += "<span class='emu_disassembly_line current'>";
+		} else {
+			line += "<span class='emu_disassembly_line'>";
+		}
+		line += emf.utils.hex16(i) + " : ";
+		//
 		for(var hex = 0; hex < dis.instruction_length; ++hex) {
 			if (machine.isValidAddress(i+hex)) {
 				line += emf.utils.hex(machine.getWordAsUnsigned(i + hex), 5) + " ";
@@ -74,3 +81,28 @@ emf.framework.memory = function(div, machine, fromAddr, toAddr, previous) {
 	$(div).html(code);
 }
 
+emf.framework.paperTape = function(div, device) {
+	var code = '';
+	var idx = 0;
+	var ptr = device.getPointer();
+	var tape_width = device.getWidth();
+
+	do {
+		var rt = device.peek(idx);
+		var tape_class = "emu_tape_entry";
+
+		if (rt.error) {
+			break;
+		}
+
+		if (idx == ptr) {
+			tape_class += " current";
+		}
+
+		code +=  "<span class='" + tape_class + "'>" + emf.utils.hex(rt.data, tape_width) + "</span> ";
+		++idx;
+
+	} while(!rt.is_eof)
+
+	$(div).html(code);
+}

@@ -1,3 +1,4 @@
+
 .emu_section {
 	border:1px solid #444444;
 	box-shadow: 2px 2px #aaaaaa;
@@ -60,6 +61,11 @@
 }
 
 .emu_disassembly_line.changed {
+	font-style:italic;
+ 	color: #000000;
+}
+
+.emu_disassembly_line.current {
 	font-weight:bold;
  	color: #000000;
 }
@@ -71,3 +77,31 @@
  	color: #000000;
 	border:1px solid black;
 }
+
+
+.emu_tape_entry {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size: 10px;
+	color: #444444;
+}
+
+.emu_tape_entry.current {
+ 	color: #ff0000;
+ 	text-decoration: underline;
+}
+
+
+
+.emu_teletype {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size: 14px;
+	color: #444444;
+}
+
+.emu_debugger {
+	border:1px solid #444444;
+	box-shadow: 2px 2px #aaaaaa;
+	padding: 2px;
+	margin: 10px;
+}
+
