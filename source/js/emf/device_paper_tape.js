@@ -1,76 +1,91 @@
 emf.device = emf.device || {};
 
 emf.device.PaperTape = function(contents_) {
-var contents;
-var pointer;
+  let contents;
+  let pointer;
 
-	(function ctor(contents_) {
-		loadTape(contents_);
-	})(contents_);
+  (function ctor(contents_) {
+    loadTape(contents_);
+  })(contents_);
 
-	function loadTape(contents_) {
-		contents = contents_;
-		pointer = 0;
-	}
+  function reset() {
+    rewind();
+  }
 
-	function rewind() {
-		seekTo(0);
-	}
+  function loadTape(contents_) {
+    contents = contents_;
+    reset();
+  }
 
-	function seekTo(idx) {
-		if (idx < 0) {
-			pointer = 0;
-		} else if (idx >= contents.length) {
-			pointer = contents.length-1;
-		} else {
-			pointer = idx;
-		}
-	}
+  function rewind() {
+    seekTo(0);
+  }
 
-	function seekForward(idx) {
-		seekTo(pointer + idx);
-	}
+  function seekTo(idx) {
+    if (idx < 0) {
+      pointer = 0;
+    } else if (idx >= contents.length) {
+      pointer = contents.length - 1;
+    } else {
+      pointer = idx;
+    }
+  }
 
-	function seekBackward(idx) {
-		seekTo(pointer - idx);
-	}
+  function seekForward(idx) {
+    seekTo(pointer + idx);
+  }
 
-	function getPointer() {
-		return pointer;
-	}
+  function seekBackward(idx) {
+    seekTo(pointer - idx);
+  }
 
-	function peek(idx) {
-		if (contents === undefined) {
-			return {error: "No tape loaded"};
-		}
-		var v = contents[idx === undefined ? pointer : idx];
-		if (v === undefined) {
-			return {error: "Tape index is invalid"};
-		}
-		var is_eof = idx >= contents.length;
-		return { data : v, is_eof: is_eof, duration: 1};
-	}
+  function getPointer() {
+    return pointer;
+  }
 
-	function fetch() {
-		var rt = peek();
-		if (rt.error === undefined) {
-			++pointer;
-		}
-		return rt;
-	}
+  function peek(idx) {
+    if (contents === undefined) {
+      return {
+        error: "No tape loaded"
+      };
+    }
+    let v = contents[idx === undefined ? pointer : idx];
+    if (v === undefined) {
+      return {
+        error: "Tape index is invalid"
+      };
+    }
+    let is_eof = idx >= contents.length;
+    return {
+      data: v,
+      is_eof: is_eof,
+      duration: 1
+    };
+  }
 
-	function getWidth() { return 2; }
+  function fetch() {
+    let rt = peek();
+    if (rt.error === undefined) {
+      ++pointer;
+    }
+    return rt;
+  }
 
-	return {
-		loadTape,
-		rewind,
-		seekTo,
-		seekForward,
-		seekBackward,
-		getPointer,
-		peek,
-		fetch,
-		getWidth
-	};
+  function getWidth() {
+    return 2;
+  }
+
+  return {
+    reset,
+    loadTape,
+    rewind,
+    seekTo,
+    seekForward,
+    seekBackward,
+    getPointer,
+    peek,
+    fetch,
+    getWidth
+  };
 
 }

@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="em.late.es - Emulation in Javascript">
+  <meta name="author" content="Steven Goodwin - Marquis de Geek">
+
+    <title>The Emulator Framework - EMF</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/emulates-template.css" rel="stylesheet">
+
+    <script type="text/javascript" src="//sgxengine.com/code/lib/js/jquery/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="//sgxengine.com/code/jpjs/jquery.jplayer.min.js"></script>
+	<script type='text/javascript' src='//sgxengine.com/code/sgx/sgx-3.1.15.min.js'></script>
+
+    <!-- EMF library -->
+
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"> 
+                    <a class="nav-link" href="/index.php">[The Emulation Framework]</a>
+                </li>
+
+                <li class="nav-item"> 
+                    <a class="nav-link" href="#" onclick="menuAbout();">[About]<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+
+
+    <!-- INCLUDE:HEADER -->
+
+    <link rel="stylesheet" type="text/css" href="css/emf_main.css">
+    <link rel="stylesheet" type="text/css" href="css/emf_font.css">
+
+    <script type="text/javascript" src="//sgxengine.com/code/lib/js/jquery/jquery-1.11.1.min.js"></script>
+
+    <script type="text/javascript" src="js/emf/emf.js"></script>
+    <script type="text/javascript" src="js/emf/audio.js"></script>
+    <script type="text/javascript" src="js/emf/assembler.js"></script>
+    <script type="text/javascript" src="js/emf/bus.js"></script>
+    <script type="text/javascript" src="js/emf/comparator.js"></script>
+    <script type="text/javascript" src="js/emf/controller.js"></script>
+    <script type="text/javascript" src="js/emf/debugger.js"></script>
+    <script type="text/javascript" src="js/emf/device_paper_tape.js"></script>
+    <script type="text/javascript" src="js/emf/device_teleprinter.js"></script>
+    <script type="text/javascript" src="js/emf/dragdrop.js"></script>
+    <script type="text/javascript" src="js/emf/eaas.js"></script>
+    <script type="text/javascript" src="js/emf/exporter.js"></script>
+    <script type="text/javascript" src="js/emf/framework.js"></script>
+    <script type="text/javascript" src="js/emf/importer.js"></script>
+    <script type="text/javascript" src="js/emf/input.js"></script>
+    <script type="text/javascript" src="js/emf/maths.js"></script>
+    <script type="text/javascript" src="js/emf/memory.js"></script>
+    <script type="text/javascript" src="js/emf/number.js"></script>
+    <script type="text/javascript" src="js/emf/saveas.js"></script>
+    <script type="text/javascript" src="js/emf/scripting.js"></script>
+    <script type="text/javascript" src="js/emf/ui.js"></script>
+    <script type="text/javascript" src="js/emf/utils.js"></script>
+
+    <script type="text/javascript" src="development.js"></script>
+    <script type="text/javascript" src="example/null.js"></script>
+    <script type="text/javascript" src="example/assembler.js"></script>
+    <script type="text/javascript" src="example/disassembler.js"></script>
+    <script type="text/javascript" src="example/emulator.js"></script>
+    <script type="text/javascript" src="example/memory.js"></script>
+    <script type="text/javascript" src="example/clock.js"></script>
+
+    <div class="modal" tabindex="-1" role="dialog" id="menuAboutModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">About</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        This emulator was built using the EMF system, designed and implemented by Steven Goodwin, between 2011 and 2020.
+                    </p>
+                    <p>
+                        First, the machine is defined with a custom description language. Each component part, along with its interactives, it's explained in a human-friendly, and machine-readable, format.
+                    </p>
+                    <p>
+                        Then, this description is processed to generate an emulator, assembler, and dissembler for the machine in question. This can be in any language, but is currently targetted to JavaScript.
+                    </p>
+                    <p>
+                        Finally, these files are glued into the JavaScript EMF framework, which handles the UI-specific components.
+                    </p>
+                   <!-- INCLUDE:COPYRIGHT -->
+                    <p>
+                      EMF is Copyright by Steven Goodwin, 2011-2020. All rights reserved.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="workarea">
+
+        <div class="container">
+          <div class="row">
+            <div id="disassembly_div" class="card col-6 col-md-4">
+                <div id="emf_disassembly_solo" class="emf_disassembly scrollable"></div>
+            </div>
+            <div class="col-12 col-md-8 ">
+                 <div class="card text-center">
+                    <div class="card-body">
+                    <div id="sgxAudio"></div>
+                    <canvas id="SGXCanvas" width="320" height="480">
+                    This browser does not support the HTML5 Canvas.
+                    </canvas>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 col-md-4">
+                <div id="emf_registers" class="container">
+                </div>
+            </div>
+            <div class="col-12 col-md-8 ">
+                <div id="emf_state">Initialising</div><br>
+                <div class="btn-group" role="group" aria-label="Control">
+                   <a href="#" class="btn btn-outline-success my-2 my-sm-0" id= "emf_run">Start</a>
+                   <a href="#" class="btn btn-outline-success my-2 my-sm-0" id= "emf_stop">Stop</a>
+                   <a href="#" class="btn btn-outline-success my-2 my-sm-0" id= "emf_step">Step</a> &nbsp;
+                   <a href="#" class="btn btn-outline-success my-2 my-sm-0" id= "emf_over">Over</a> &nbsp;
+
+                   <a href="#" class="btn btn-outline-success my-2 my-sm-0" id= "emf_reset">Reset</a> &nbsp;
+                   <a href="#" class="btn btn-outline-success my-2 my-sm-0" id= "emf_export">Export</a>
+                </div>
+
+                <!-- INCLUDE:CONTROLS -->
+
+                <div class="btn-group">
+                    <label class="btn btn-secondary active"><input id="opt_auto_update" type="checkbox" autocomplete="off" checked> Update</label>
+                </div>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6 col-md-4">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                </div>
+            </div>
+            <div class="col-12 col-md-8 ">
+
+                <label>Debugger</label>
+                <textarea class="form-control" id="emf_dbug_outtext" readonly rows="6">
+                </textarea>
+                <div class="input-group mb-3">
+                    <input class="form-control" id="emf_dbug_intext" placeholder="Enter command. e.g. help">
+                    <div class="input-group-append">
+                        <button id="emf_dbug_enter" type="submit" class="btn btn-primary">Enter</button>
+                    </div>
+                </div>
+
+            </div>
+         </div>
+
+
+        </div>
+
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+

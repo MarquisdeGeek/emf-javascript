@@ -1,28 +1,34 @@
 emf.device = emf.device || {};
 
 emf.device.Teleprinter = function(id) {
-var dom_id;
+  let dom_id;
 
-	(function ctor(id) {
-		dom_id = id;
-	})(id);
+  (function ctor(id) {
+    dom_id = id;
+    reset();
+  })(id);
 
-	function onCharacterPrint(c) {
-		$(dom_id).append(c);
-	}
+  function reset() {
+    $(dom_id).html('');
+  }
 
-	function onCharacterRead() {
-		return 0;
-	}
+  function onCharacterPrint(c) {
+    $(dom_id).append(c);
+  }
 
-	function onLinePrint(text) {
-		$(dom_id).append(text);
-		$(dom_id).append("<br>");
-	}
+  function onCharacterRead() {
+    return 0;
+  }
 
-	return {
-		onCharacterRead,
-		onCharacterPrint,
-		onLinePrint
-	};
+  function onLinePrint(text) {
+    $(dom_id).append(text);
+    $(dom_id).append("<br>");
+  }
+
+  return {
+    reset,
+    onCharacterRead,
+    onCharacterPrint,
+    onLinePrint
+  };
 }

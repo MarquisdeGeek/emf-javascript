@@ -1,0 +1,172 @@
+body {
+	font-size: 12px;
+}
+
+/* UI overrides */
+.btn {
+	font-size: 14px;
+}
+
+/* Framework styles */
+.emf_section {
+	border:1px solid #444444;
+	box-shadow: 2px 2px #aaaaaa;
+	padding: 2px;
+	margin: 10px;
+}
+
+.scrollable {
+    overflow-y: scroll;
+    height: 220px;
+}
+
+.emf_register {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size: 14px;
+	color: #444444;
+}
+
+.emf_register.changed {
+	font-weight:bold;
+ 	color: #000000;
+}
+
+#emf_state {
+	font-size: 14px;
+	color: #000000;
+}
+
+.emf_memory {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size: 11px;
+	color: #444444;
+	padding: 1rem 0.1rem;
+}
+
+.emf_memory_line {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size: 12px;
+	color: #444444;
+}
+.emf_memory_line::after {
+  content: "";
+  display: block;
+}
+
+.emf_memory_line.changed {
+	font-weight:bold;
+ 	color: #000000;
+}
+
+
+.emf_disassembly {
+    overflow-x: scroll;
+    white-space:nowrap; 
+    width: 300px;
+    resize: both;
+}
+
+.emf_disassembly_line {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	/* font-size: 10px; */
+	color: #444444;
+}
+.emf_disassembly_line::after {
+  display: block;
+}
+
+.emf_disassembly_line.changed {
+	font-style:italic;
+ 	color: #000000;
+}
+
+.emf_disassembly_line.current {
+	font-weight:bold;
+ 	color: #000000;
+}
+
+.emf_tape_entry {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size: 10px;
+	color: #444444;
+}
+
+.emf_tape_entry.current {
+ 	color: #ff0000;
+ 	text-decoration: underline;
+}
+
+
+
+.emf_teletype {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size: 14px;
+	color: #444444;
+}
+
+.emf_debugger {
+	border:1px solid #444444;
+	box-shadow: 2px 2px #aaaaaa;
+	padding: 2px;
+	margin: 10px;
+}
+
+
+#emf_disassembly_solo {
+    overflow-y: scroll;
+    height: 420px;
+    width: 100%;
+	padding: 0.2rem;
+    resize: both;
+}
+
+#emf_trace_solo {
+    overflow-y: scroll;
+    height: 40px;
+    width: 100%;
+	padding: 0.2rem;
+    resize: both;
+}
+
+#emf_memory_solo {
+    height: 420px;
+    width: 100%;
+	padding: 0.2rem;
+}
+
+#emf_asm_intext {
+	white-space: break-spaces;
+}
+
+#emf_asm_memory_content {
+    height: 420px;
+    width: 100%;
+    resize: both;
+}
+
+#emf_errorlist_content {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size: 11px;
+}
+
+#emf_fullmap_content {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size: 11px;
+}
+
+#emf_equates_content {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size: 11px;
+}
+
+#emf_memory_source {
+    overflow-y: scroll;
+    height: 420px;
+    width: 100%;
+}
+
+#emf_memory_dest {
+    overflow-y: scroll;
+    height: 420px;
+    width: 100%;
+}
